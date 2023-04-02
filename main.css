@@ -404,3 +404,44 @@ h1{
     color: #FFFFFF;
     font-size: 15px;
 }
+
+
+
+
+.finish__plag{
+    margin: 0 auto;
+    margin-top: 90px;
+}
+
+
+.final__h1{
+    text-align: left;
+
+}
+
+
+.mail__label{
+    text-align: left;
+    color: #fff;
+    margin-top: 60px;
+    text-transform: uppercase;
+}
+
+
+.mail__input{
+    padding: 20px;
+    border-radius: 50px;
+    border: none;
+    background: #ffffff72;
+    color: #fff;
+}
+
+.mail__input:active{
+    border: none;
+}
+
+
+.mail__input::placeholder{
+    color: grey;
+    font-size: 16px;
+}

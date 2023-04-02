@@ -252,5 +252,10 @@ const questions = [
             'GET INTO KETOSIS QUICKLY',
         ],
     },
-
+    {
+        index: 16,
+        question: 'Now we are working with your answers. As soon as it possible you will be able to check results on your email.',
+        type: 'createFinish',
+        label: 'Plese, leave it here and we`ll send information to you',
+    },
 ]

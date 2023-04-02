@@ -1,6 +1,7 @@
 const btns = document.querySelectorAll('.btn')
 const content = document.querySelector('.container')
 
+
 let questionIndex = 0
 
 btns.forEach(el => {
@@ -32,6 +33,10 @@ function changeSlide() {
         }else if (arr.type === 'manyOfMore') {
             manyOfMore(arr, index)
             fun()
+            questionIndex++
+            return
+        }else if (arr.type === 'createFinish') {
+            createFinish(arr, index)
             questionIndex++
             return
         }
@@ -73,8 +78,22 @@ const createManual = (item, index) =>{
 
     </div>
     `
-
     content.innerHTML =  manual
+}
+
+const createFinish = (item, index) =>{
+    const finish = `
+        <div class="finish__plag manual">
+            <div class="container">
+                <h1 class="final__h1 question">Now we are working with your answers. <br> As soon as it possible you will be able to check results on your email.</h1>
+                <label class="mail__label" for="mail">Plese, leave it here and we'll send information to you</label>
+                <input class="mail__input" name="mail" type="mail" placeholder="Type...">
+                <button class="finish__send__btn btn manual__btn men__type">Send</button>
+            </div>
+        </div>
+    `
+    const finBlock = document.querySelector('.finish__block');
+    finBlock.innerHTML = finish
 }
 
 const createMany = (item, index) =>{
@@ -90,7 +109,7 @@ const createMany = (item, index) =>{
             <button class="MOM__btn btn checkzone__btn men__type" onclick="checkAnswer()">Next</button>
             
             <div class="MOM__progress gender__tab progress__bar">
-                <span class="progress">${questionIndex+2}/17</span>
+                <span class="progress">${questionIndex+2}/16</span>
             </div>
         </div>
         <button class="back__btn" onclick="backClick(${index})">back</button>
@@ -132,14 +151,11 @@ const fun = () =>{
     searchInput.forEach(element => {
         console.log(element);
         element.onclick = () =>{
-            console.log(1);
             if (document.querySelector('input:checked')) {
                 element.classList.add('select')
-                console.log(2);
                 return
             }else{
                 element.classList.remove('select')
-                console.log(3);
                 return
             }
         }
@@ -159,7 +175,7 @@ const oneOfMore = (item, index) =>{
                     <button class="MOM__btn btn checkzone__btn men__type" onclick="checkAnswer()">Next</button>
                     
                     <div class="MOM__progress gender__tab progress__bar">
-                        <span class="progress">${questionIndex+2}/17</span>
+                        <span class="progress">${questionIndex+2}/16</span>
                     </div>
                 </div>
                 <button class="back__btn" onclick="backClick(${index})">back</button>
@@ -195,10 +211,10 @@ const manyOfMore = (item, index) =>{
 
 
                 <div class="MOM__footer">
-                    <button class="MOM__btn btn checkzone__btn men__type" onclick="checkAnswer()">Next</button>
+                    <button class="lastBtn MOM__btn btn checkzone__btn men__type" onclick="lastSlideBtn()">Next</button>
                     
                     <div class="MOM__progress gender__tab progress__bar">
-                        <span class="progress">${questionIndex+2}/17</span>
+                        <span class="progress">${questionIndex+2}/16</span>
                     </div>
                 </div>
                 <button class="back__btn" onclick="backClick(${index})">back</button>
@@ -234,7 +250,7 @@ const createQuestions = (item, index) =>{
                 </div>
                 <button class="back__btn" onclick="backClick(${index})"> back</button>
                 <div class="OOM__progress gender__tab progress__bar">
-                    <span class="progress">${questionIndex+2}/17</span>
+                    <span class="progress">${questionIndex+2}/16</span>
                 </div>
             </div>
         </div>    
@@ -252,5 +268,11 @@ const createQuestions = (item, index) =>{
 
 function backClick(index) {
     questionIndex = index - 1
+    changeSlide()
+}
+
+function lastSlideBtn() {
+    const lastBtn = document.querySelector('.lastBtn')
+    checkAnswer()
     changeSlide()
 }
